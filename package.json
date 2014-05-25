@@ -1,0 +1,19 @@
+{
+  "name": "gge4-node",
+  "version": "0.0.0",
+  "description": "First Data Global Gateway e4 Client for Node JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/athensholloway/gge4-node.git"
+  },
+  "author": "Logic Artisan, Inc.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/athensholloway/gge4-node/issues"
+  },
+  "homepage": "https://github.com/athensholloway/gge4-node"
+}
