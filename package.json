@@ -15,5 +15,17 @@
   "bugs": {
     "url": "https://github.com/athensholloway/gge4-node/issues"
   },
-  "homepage": "https://github.com/athensholloway/gge4-node"
+  "homepage": "https://github.com/athensholloway/gge4-node",
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-bump": "0.0.14",
+    "grunt-contrib-jshint": "~0.9.2",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-jasmine-node": "~0.2.1",
+    "grunt-plato": "~1.0.0"
+  },
+  "dependencies": {
+    "q": "~1.0.1",
+    "underscore": "~1.6.0"
+  }
 }
