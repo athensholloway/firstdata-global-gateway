@@ -1,19 +1,18 @@
 (function () {
    'use strict';
-	
-	var RequestBuilder = require('../../lib/RequestBuilder');
-	var sha1HmacBuilderSpy = {};
-	sha1HmacBuilderSpy.withContentType = jasmine.createSpy('withContentType').andReturn(sha1HmacBuilderSpy);
-	sha1HmacBuilderSpy.withRequestMethod = jasmine.createSpy('withRequestMethod').andReturn(sha1HmacBuilderSpy);
-	sha1HmacBuilderSpy.withContentDigest = jasmine.createSpy('withContentDigest').andReturn(sha1HmacBuilderSpy);
-	sha1HmacBuilderSpy.withSendingTime = jasmine.createSpy('withSendingTime').andReturn(sha1HmacBuilderSpy);
-	sha1HmacBuilderSpy.withRequestUrl = jasmine.createSpy('withRequestUrl').andReturn(sha1HmacBuilderSpy);
-	
 	describe('Global Gateway e4 Request Builder', function() {
+		var RequestBuilder = require('../../lib/RequestBuilder');
+		var sha1HmacBuilderSpy = {};
+		
+		sha1HmacBuilderSpy.withContentType = jasmine.createSpy('withContentType').andReturn(sha1HmacBuilderSpy);
+		sha1HmacBuilderSpy.withRequestMethod = jasmine.createSpy('withRequestMethod').andReturn(sha1HmacBuilderSpy);
+		sha1HmacBuilderSpy.withContentDigest = jasmine.createSpy('withContentDigest').andReturn(sha1HmacBuilderSpy);
+		sha1HmacBuilderSpy.withSendingTime = jasmine.createSpy('withSendingTime').andReturn(sha1HmacBuilderSpy);
+		sha1HmacBuilderSpy.withRequestUrl = jasmine.createSpy('withRequestUrl').andReturn(sha1HmacBuilderSpy);
 		
 		it('Should set the authorization HTTP header', function(){
 			//Given
-			var message = {name:'message',id:1};
+			var message = JSON.stringify({name:'message',id:1});
 			var now = new Date();
 			var hmacKeyId = '137288';
 			var sha1Hmac = 'Test';
@@ -38,7 +37,7 @@
 		
 		it('Should set the x-gge4-date HTTP header', function(){
 			//Given
-			var message = {name:'message',id:1};
+			var message = JSON.stringify({name:'message',id:1});
 			var now = new Date();
 			var hmacKeyId = '137288';
 			var sha1Hmac = 'Test';
@@ -63,7 +62,7 @@
 		
 		it('Should set the x-gge4-content-sha1 HTTP header', function(){
 			//Given
-			var message = {name:'message',id:1};
+			var message = JSON.stringify({name:'message',id:1});
 			var now = new Date();
 			var hmacKeyId = '137288';
 			var sha1Hmac = 'Test';
@@ -88,7 +87,7 @@
 		
 		it('Should set the Content-Type HTTP header', function(){
 			//Given
-			var message = {name:'message',id:1};
+			var message = JSON.stringify({name:'message',id:1});
 			var now = new Date();
 			var hmacKeyId = '137288';
 			var sha1Hmac = 'Test';
@@ -113,7 +112,7 @@
 		
 		it('Should set the Accept HTTP header', function(){
 			//Given
-			var message = {name:'message',id:1};
+			var message = JSON.stringify({name:'message',id:1});
 			var now = new Date();
 			var hmacKeyId = '137288';
 			var sha1Hmac = 'Test';
@@ -138,7 +137,7 @@
 		
 		it('Should set the host', function(){
 			//Given
-			var message = {name:'message',id:1};
+			var message = JSON.stringify({name:'message',id:1});
 			var now = new Date();
 			var hmacKeyId = '137288';
 			var sha1Hmac = 'Test';
@@ -163,7 +162,7 @@
 		
 		it('Should set the port', function(){
 			//Given
-			var message = {name:'message',id:1};
+			var message = JSON.stringify({name:'message',id:1});
 			var now = new Date();
 			var hmacKeyId = '137288';
 			var sha1Hmac = 'Test';
@@ -189,7 +188,7 @@
 		
 		it('Should set the URI', function(){
 			//Given
-			var message = {name:'message',id:1};
+			var message = JSON.stringify({name:'message',id:1});
 			var now = new Date();
 			var hmacKeyId = '137288';
 			var sha1Hmac = 'Test';
@@ -214,7 +213,7 @@
 		
 		it('Should set the method', function(){
 			//Given
-			var message = {name:'message',id:1};
+			var message = JSON.stringify({name:'message',id:1});
 			var now = new Date();
 			var hmacKeyId = '137288';
 			var sha1Hmac = 'Test';
