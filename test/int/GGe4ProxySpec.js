@@ -1,5 +1,6 @@
 (function () {
    'use strict';
+
 	describe('GGe4Proxy', function() {
 		var GGe4Proxy = require('../../lib/GGe4Proxy');
 		
@@ -14,6 +15,7 @@
 				}
 			};
 		}
+		
 		function buildGGe4Config () {
 			return {
 				hmacKey: '_Jcn8wvSqrqKlhCUdId2Xpl5hO6bINMG',
@@ -38,7 +40,18 @@
 			//Then
 			promise.then(
 				function successfulPurchaseCallback(response){
-					expect(true).toBe(true);
+					expect(response.authorizationNumber).toBeDefined();
+					expect(response.clientIP).toBeDefined();
+					expect(response.sequenceNumber).toBeDefined();
+					expect(response.transactionTag).toBeDefined();
+					expect(response.customerTransactionRecord).toBeDefined();
+					expect(response.amount).toBeDefined();
+					expect(response.creditCardNumber).toBeDefined();
+					expect(response.creditCardType).toBeDefined();
+					expect(response.creditCardExpirationDate).toBeDefined();
+					expect(response.cardholderName).toBeDefined();
+					expect(response.currencyCode).toBeDefined();
+					expect(response.rawData).toBeDefined();
 					done();
 				},
 				function failedPurchaseCallback(response){

@@ -36,21 +36,22 @@ module.exports = function(grunt) {
 			}
 		},
 		jasmine_node: {
-			unit: ['test/unit/'],
 			options: {
 				forceExit: true,
 				verbose: true,
 				match: '.',
 				matchall: false,
 				extensions: 'js',
-				specNameMatcher: 'Spec',
-				jUnit: {
+				specNameMatcher: '*Spec'
+				/*jUnit: {
 					report: true,
 					savePath : "../build/reports/jasmine-junit.xml",
 					useDotNotation: true,
 					consolidate: true
-				}
-			}
+				}*/
+			},
+			unit: ['test/unit/'],
+			int: ['test/int/']
 		},
 		plato: {
 			build: {
@@ -78,8 +79,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-bump');
 	
 	//testing
-	grunt.registerTask('test:unit', ['jshint:default', 'jasmine_node:unit']);
-	grunt.registerTask('test:int', ['jshint', 'jasmine_node:int']);
 	grunt.registerTask('test', ['jshint', 'jasmine_node:unit', 'jasmine_node:int']);
 	
 	//code quality

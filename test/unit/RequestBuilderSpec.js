@@ -32,7 +32,7 @@
 			var request = requestBuilder.build();
 			
 			//Then
-			expect(request.headers['authorization']).toBe('GGE4_API '+hmacKeyId+':'+sha1Hmac);
+			expect(request.headers.authorization).toBe('GGE4_API '+hmacKeyId+':'+sha1Hmac);
 		});
 		
 		it('Should set the x-gge4-date HTTP header', function(){
@@ -132,7 +132,7 @@
 			var request = requestBuilder.build();
 			
 			//Then
-			expect(request.headers['Accept']).toBe("application/json");
+			expect(request.headers.Accept).toBe("application/json");
 		});
 		
 		it('Should set the host', function(){
