@@ -32,5 +32,13 @@
   "dependencies": {
     "q": "~1.0.1",
     "underscore": "~1.6.0"
+  },
+  "gge4": {
+	"hmacKey": "_Jcn8wvSqrqKlhCUdId2Xpl5hO6bINMG",
+	"hmacKeyId": "137288",
+	"serviceUri": "/transaction/v14",
+	"serviceEndPoint": "api.demo.globalgatewaye4.firstdata.com",
+	"gatewayId": "AF0663-05",
+	"password": "452q7pob"
   }
 }
