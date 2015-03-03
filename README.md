@@ -1,9 +1,72 @@
 gge4-node
 =========
 
-Bank of America's First Data Global Gateway e4 Client for Node JS
+Node JS Client for Bank of America's First Data Global Gateway e4 credit card processing service.
 
-## Bank of America Integration
+## Installation
+
+  npm install gge4 --save
+
+## Usage
+
+```javascript
+var GGe4Proxy = require('../lib/gge4/GGe4Proxy');
+
+var gge4Configuration = {
+		hmacKey: '',
+		hmacKeyId: '',
+		serviceUri: '/transaction/v14',
+		serviceEndPoint: 'api.demo.globalgatewaye4.firstdata.com',
+		gatewayId: '',
+		password: ''
+	};
+	
+var gge4Proxy = new GGe4Proxy(gge4Configuration);
+
+var charge = {
+		amount:50.00, 
+		creditCard: { 
+			name: 'John Doe, 
+			number: '4111111111111111', 
+			expirationMonth: '01', 
+			expirationYear: '20'
+		}
+	};
+	
+gge4Proxy.purchase(charge)
+.then(function (payment) {
+	//do something with the payment reciept
+})
+.fail(function (err) {
+	//do something with the payment failure
+});
+
+```
+  var scapegoat = require('scapegoat')
+      escape = scapegoat.escape,
+      unescape = scapegoat.unescape;
+
+  var html = '<h1>Hello World</h1>',
+      escaped = escape(html),
+      unescaped = unescape(escaped);
+
+  console.log('html', html, 'escaped', escaped, 'unescaped', unescaped);
+
+## Tests
+
+  npm test
+
+## Contributing
+
+In lieu of a formal styleguide, take care to maintain the existing coding style.
+Add unit and integration tests for any new or changed functionality. Lint and test your code.
+
+## Release History
+
+* 1.0.0 Initial release
+
+
+### Additional Information
 
 First Data Global Gateway:
 
