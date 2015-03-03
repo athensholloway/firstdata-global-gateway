@@ -10,7 +10,7 @@ Node JS Client for Bank of America's First Data Global Gateway e4 credit card pr
 ## Usage
 
 ```javascript
-var GGe4Proxy = require('../lib/gge4/GGe4Proxy');
+var GGe4Proxy = require('GGe4Proxy');
 
 var gge4Configuration = {
 		hmacKey: '',
