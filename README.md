@@ -25,7 +25,7 @@ var gge4Configuration = {
 	
 var gge4Proxy = new GGe4Proxy(gge4Configuration);
 
-var charge = {
+var payload = {
 		amount:50.00, 
 		creditCard: { 
 			name: 'John Doe, 
@@ -36,7 +36,7 @@ var charge = {
 		}
 	};
 	
-gge4Proxy.purchase(charge)
+gge4Proxy.purchase(payload)
 .then(function (payment) {
 	//do something with the payment reciept
 })
