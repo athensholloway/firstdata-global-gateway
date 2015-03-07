@@ -1,4 +1,4 @@
-First Data Global Gateway e4 Client for Node JS
+First Data Global Gateway e4 Client
 =========
 
 Node JS Client for Bank of America's [First Data Global Gateway e4](https://globalgatewaye4.firstdata.com/) credit card processing service.
