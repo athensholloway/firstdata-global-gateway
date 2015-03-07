@@ -12,7 +12,7 @@ Node JS Client for Bank of America's [First Data Global Gateway e4](https://glob
 ## Usage
 
 ```javascript
-var GGe4Proxy = require('GGe4Proxy');
+var GGe4Proxy = require('firstdata-global-gateway');
 
 var gge4Configuration = {
 		hmacKey: '',
@@ -31,7 +31,8 @@ var charge = {
 			name: 'John Doe, 
 			number: '4111111111111111', 
 			expirationMonth: '01', 
-			expirationYear: '20'
+			expirationYear: '20',
+			securityCode: '123'
 		}
 	};
 	

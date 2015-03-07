@@ -1,6 +1,6 @@
 {
   "name": "firstdata-global-gateway",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "First Data Global Gateway e4 Client for Node JS",
   "main": "src/GGe4Proxy.js",
   "scripts": {
