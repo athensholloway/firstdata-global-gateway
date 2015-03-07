@@ -26,9 +26,16 @@
 	}
 	
 	GGe4Proxy.prototype._adaptError = function (response) {
+		var payload = response.payload;
+		var isBankFailure = payload.bank_message !== 'Approved';
+		
+		var code =  isBankFailure ? payload.bank_resp_code : payload.exact_resp_code;
+		var defaultMessage = isBankFailure ? payload.bank_message : payload.exact_message;
+		
 		var result = {
-			reason: ResponseCodes[response.payload.bank_resp_code] || response.payload.bank_message,
+			reason: ResponseCodes[code] || defaultMessage
 		};
+		
 		return result;
 	};
 	
@@ -97,7 +104,10 @@
 			amount: charge.amount,
 			cc_number: charge.creditCard.number,
 			cc_expiry: charge.creditCard.expirationMonth + charge.creditCard.expirationYear,
-			cardholder_name: charge.creditCard.name
+			cardholder_name: charge.creditCard.name,
+			cc_verification_str2: charge.creditCard.securityCode,
+			cvd_presence_ind: '1'
+			
 		});
 		
 		return this._sendRequest(message);

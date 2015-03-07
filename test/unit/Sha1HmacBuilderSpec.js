@@ -2,7 +2,7 @@
    'use strict';
 		
 	describe('SHA-1 HMAC Builder', function() {
-		var Sha1HmacBuilder = require('../../lib/Sha1HmacBuilder');
+		var Sha1HmacBuilder = require('../../src/Sha1HmacBuilder');
 		
 		
 		it('Should build the SHA-1 HMAC digest', function(){

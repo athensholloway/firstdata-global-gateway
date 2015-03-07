@@ -2,7 +2,7 @@
    'use strict';
 
 	describe('GGe4Proxy', function() {
-		var GGe4Proxy = require('../../lib/GGe4Proxy');
+		var GGe4Proxy = require('../../src/GGe4Proxy');
 		
 		function buildCharge () {
 			return {
@@ -11,7 +11,8 @@
 					name:'Test Customer', 
 					number:'4111111111111111', 
 					expirationMonth:'06', 
-					expirationYear:'18'
+					expirationYear:'25',
+					securityCode: '123'
 				}
 			};
 		}
@@ -55,6 +56,7 @@
 					done();
 				},
 				function failedPurchaseCallback(response){
+					console.log(response);
 					expect(true).toBe(false);
 					done();
 				});
@@ -78,7 +80,35 @@
 					done();
 				},
 				function failedPurchaseCallback(response){
-					expect(true).toBe(true);
+					var reason = 'Your credit card has an expired an or bad date sent. Confirm the correct date.';
+					
+					expect(response.reason).toBe(reason);
+					done();
+				});
+			
+		}, 5000);
+		
+		it('Should require a security code', function(done){
+			
+			//Given
+			var charge = buildCharge();
+			var gge4Config = buildGGe4Config();
+			var gge4Proxy = new GGe4Proxy(gge4Config);
+			
+			charge.creditCard.securityCode = undefined;
+			
+			//When
+			var promise = gge4Proxy.purchase(charge);
+			
+			//Then
+			promise.then(
+				function successfulPurchaseCallback(response){
+					expect(true).toBe(false);
+					done();
+				},
+				function failedPurchaseCallback(response){
+					var reason = 'Your credit card security code is invalid or missing.';
+					expect(response.reason).toBe(reason);
 					done();
 				});
 			

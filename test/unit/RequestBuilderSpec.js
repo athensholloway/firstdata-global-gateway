@@ -1,7 +1,7 @@
 (function () {
    'use strict';
 	describe('Global Gateway e4 Request Builder', function() {
-		var RequestBuilder = require('../../lib/RequestBuilder');
+		var RequestBuilder = require('../../src/RequestBuilder');
 		var sha1HmacBuilderSpy = {};
 		
 		sha1HmacBuilderSpy.withContentType = jasmine.createSpy('withContentType').andReturn(sha1HmacBuilderSpy);
