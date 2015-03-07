@@ -66,12 +66,13 @@ Hours of Operation
 8-10PM M-F
 9-?-Sat
 
-- ##### URI: https://globalgatewaye4.firstdata.com/
-- ##### WEB SERVIE API: https://firstdata.zendesk.com/entries/407571-First-Data-Global-Gateway-e4-Web-Service-API-Reference-Guide
-- ##### Test Credit Card Numbers: https://firstdata.zendesk.com/entries/407651-Using-test-credit-card-numbers
-- ##### Highest Transactions Allowed: https://firstdata.zendesk.com/entries/20730816-what-is-the-highest-transaction-amount-allowed-within-gge4
-- #### Require CVV: https://firstdata.zendesk.com/entries/407683-Making-CVD-CVV2-field-appear-in-my-First-Data-Global-Gateway-e4-Payment-Page
-- #### Text CVV: https://firstdata.zendesk.com/entries/407655-How-to-test-CVD-CVV-CVV2-functionality
+- **Website:** https://globalgatewaye4.firstdata.com/
+- **Web Service API:** https://firstdata.zendesk.com/entries/407571-First-Data-Global-Gateway-e4-Web-Service-API-Reference-Guide
+- **Test Credit Card Numbers:** https://firstdata.zendesk.com/entries/407651-Using-test-credit-card-numbers
+- **Highest Transactions Allowed:** https://firstdata.zendesk.com/entries/20730816-what-is-the-highest-transaction-amount-allowed-within-gge4
+- **Require Security Code (e.g. CVV):** https://firstdata.zendesk.com/entries/407683-Making-CVD-CVV2-field-appear-in-my-First-Data-Global-Gateway-e4-Payment-Page
+- **Test Security Codes:** https://firstdata.zendesk.com/entries/407655-How-to-test-CVD-CVV-CVV2-functionality
+- **Enforce Security Code Validation:** https://firstdata.zendesk.com/entries/407653-how-do-i-setup-a-cvd-cvv2-cvv-filter-in-first-data-global-gateway-e4sm-real-time-payment-manager-rpm
 
 
 ONLY FIREFOX AND IE BROWSERS ARE SUPPORTED!!!!
@@ -83,7 +84,5 @@ ONLY FIREFOX AND IE BROWSERS ARE SUPPORTED!!!!
  * interface when using a Merchant Administrator 
  * account.
  * Login: https://demo.globalgatewaye4.firstdata.com/?lang=en
- * username: logic54
- * password: jWwR3JW8ANUdpdp
  */
  ```
