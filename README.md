@@ -7,7 +7,7 @@ Node JS Client for Bank of America's [First Data Global Gateway e4](https://glob
 
 ## Installation
 
-  npm install gge4 --save
+  npm install firstdata-global-gateway --save
 
 ## Usage
 
