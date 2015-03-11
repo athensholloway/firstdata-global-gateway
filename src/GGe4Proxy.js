@@ -33,7 +33,8 @@
 		var defaultMessage = isBankFailure ? payload.bank_message : payload.exact_message;
 		
 		var result = {
-			reason: ResponseCodes[code] || defaultMessage
+			reason: ResponseCodes[code] || defaultMessage,
+			failureResponse: response
 		};
 		
 		return result;
