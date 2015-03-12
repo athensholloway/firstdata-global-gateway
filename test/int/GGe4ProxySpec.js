@@ -19,12 +19,12 @@
 		
 		function buildGGe4Config () {
 			return {
-				hmacKey: '_Jcn8wvSqrqKlhCUdId2Xpl5hO6bINMG',
-				hmacKeyId: '137288',
-				serviceUri: '/transaction/v13',
+				hmacKey: '',
+				hmacKeyId: '',
+				serviceUri: '/transaction/v14',
 				serviceEndPoint: 'api.demo.globalgatewaye4.firstdata.com',
-				gatewayId: 'AF0663-05',
-				password: '452q7pob'
+				gatewayId: '',
+				password: ''
 			};
 		}
 				

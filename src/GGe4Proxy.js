@@ -3,7 +3,7 @@
 	
 	var Sha1HmacBuilder = require('./Sha1HmacBuilder');
 	var RequestBuilder = require('./RequestBuilder');
-	var ResponseCodes = require('./ResponseCodes');
+	var FirstDataResponse = require('./FirstDataResponse'); 
 	var https = require('https');
 	var Q = require('q');
 	
@@ -25,73 +25,51 @@
 			.withHeader('Accept','application/json');
 	}
 	
-	GGe4Proxy.prototype._adaptError = function (response) {
-		var payload = response.payload;
-		var isBankFailure = payload.bank_message !== 'Approved';
-		
-		var code =  isBankFailure ? payload.bank_resp_code : payload.exact_resp_code;
-		var defaultMessage = isBankFailure ? payload.bank_message : payload.exact_message;
-		
-		var result = {
-			reason: ResponseCodes[code] || defaultMessage,
-			failureResponse: response
-		};
-		
-		return result;
-	};
-	
-	GGe4Proxy.prototype._adaptResponse = function (response) {
-		var result = {
-			authorizationNumber: response.payload.authorization_num,
-			transactionTag: response.payload.transaction_tag,
-			sequenceNumber: response.payload.sequence_no,
-			customerTransactionRecord: response.payload.ctr,
-			clientIP: response.payload.client_ip,
-			amount: response.payload.amount,
-			creditCardNumber: response.payload.cc_number, 
-			creditCardType: response.payload.credit_card_type, 
-			creditCardExpirationDate: response.payload.cc_expiry,
-			cardholderName: response.payload.cardholder_name,
-			currencyCode: response.payload.currency_code,
-			rawData: response
-		};
-		return result;
-	};
-	
-	GGe4Proxy.prototype._isResponseSuccessful = function (response) {
-		var isHttpStatusCodeSuccessful = (response.statusCode >= 200 && response.statusCode < 300);
-		var isTransactionApproved = response.payload.exact_resp_code === '00' && 
-			response.payload.transaction_error === 0  && 
-			response.payload.transaction_approved === 1;
-		return isHttpStatusCodeSuccessful && isTransactionApproved;
-	};
-	
 	GGe4Proxy.prototype._sendRequest = function (message) {
 		var deferred = Q.defer();
 		var requestOptions = this.requestBuilder.withMessage(message).withTimeStamp(new Date()).build();
-		var req = https.request(requestOptions, function(res){
+		var self = this;
+		
+		var callback = function(res) {
+			var payload = ''
+			
 			res.setEncoding('utf8');
 			res.on('data', function (chunk) {
-				var response = {
-					statusCode: res.statusCode,
-					headers: res.headers,
-					payload:JSON.parse(chunk)
-				};
-				
-				if(this._isResponseSuccessful(response)){
-					deferred.resolve(this._adaptResponse(response));
-				}else{
-					deferred.reject(this._adaptError(response));
+				payload += chunk;
+			});
+			
+			res.on('end', function () {
+				try {
+					var text = payload && payload.replace(/^\s*|\s*$/g, '');
+					res.payload = text && JSON.parse(text);
+				} catch(e) {
+					console.log(e);
 				}
-			}.bind(this));
-		}.bind(this));
+				
+				var firstDataResponse = new FirstDataResponse(res);
+			
+				if(firstDataResponse.ok()){
+					deferred.resolve(firstDataResponse.getTransaction());
+				}else{
+					deferred.reject(firstDataResponse.getError());
+				}
+			});
+		};
+		
+		var req = https.request(requestOptions, callback);
+		
+		req.setTimeout(5000, function(){
+			req.abort();
+		});
 		
 		req.on('error', function(e) {
+			console.log(e);
 			deferred.reject(this._adaptError(e));
 		}.bind(this));
 		
 		req.write(message);
 		req.end();
+		
 		
 		return deferred.promise;
 	};
