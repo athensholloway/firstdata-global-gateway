@@ -46,6 +46,8 @@
             creditCardExpirationDate:  this.payload.cc_expiry,
             cardholderName:            this.payload.cardholder_name,
             currencyCode:              this.payload.currency_code,
+            transArmorToken:           this.payload.transarmor_token,
+            approved:                  this.approved(),
             rawData:                   this.payload
         };
     };
