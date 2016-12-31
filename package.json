@@ -30,8 +30,7 @@
     "grunt-plato": "~1.0.0"
   },
   "dependencies": {
-    "q": "~1.0.1",
-    "underscore": "~1.6.0"
+    "q": "~1.0.1"
   },
   "gge4": {
 	"hmacKey": "_Jcn8wvSqrqKlhCUdId2Xpl5hO6bINMG",
