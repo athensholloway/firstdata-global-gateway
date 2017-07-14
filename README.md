@@ -28,7 +28,7 @@ var gge4Proxy = new GGe4Proxy(gge4Configuration);
 var payload = {
 		amount:50.00, 
 		creditCard: { 
-			name: 'John Doe, 
+			name: 'John Doe', 
 			number: '4111111111111111', 
 			expirationMonth: '01', 
 			expirationYear: '20',
