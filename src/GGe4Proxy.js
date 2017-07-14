@@ -64,7 +64,7 @@
 
         req.on('error', function (e) {
             console.log(e);
-            deferred.reject(this._adaptError(e));
+            deferred.reject(e);
         }.bind(this));
 
         req.write(message);
